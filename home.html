@@ -66,6 +66,31 @@
         });
 
         setInterval(showSlide, 5000);
+
+        let startX = 0;
+        let isDragging = false;
+        const sliderContainer = document.querySelector('.slider-container');
+
+        sliderContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        sliderContainer.addEventListener('touchend', (e) => {
+            if(!isDragging) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = endX - startX;
+
+            if(diff > 50){ 
+                index = (index - 1 + totalSlides) % totalSlides;
+            } else if(diff < -50){ 
+                index = (index + 1) % totalSlides;
+            }
+
+            slides.style.transform = `translateX(${-index * 100}%)`;
+            radios[index].checked = true;
+            isDragging = false;
+        });
     </script>
 
     <script>
@@ -84,3 +109,4 @@
     </script>
 </body>
 </html>
+
