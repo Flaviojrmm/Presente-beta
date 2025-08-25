@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Para Laysla - 1 Ano de Nós</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>💕Um pequeno presente para o amor da minha vida💕</h1>
+        <h2>💕Nosso 1º Ano Juntos💕</h2>
+
+        <audio id="musica" loop>
+            <source src="./musicas/KingOfMyHeart.mp3" type="audio/mpeg">
+        </audio>
+    </header>
+
+    <main>
+        <div class="slider-container">
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+
+            <div class="slides" id="slides">
+                <img src="./image/Parque.jpg">
+                <img src="./image/Princesa.jpg">
+                <img src="./image/Shopping.jpg">
+                <img src="./image/Natal.jpg">
+                
+            </div>
+
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+        </div>
+        <div  class="texto">
+        <section>
+            <p> Desde aquele nosso primeiro beijo no parque, cada momento com você se tornou inesquecível. Lembro de todos os nossos encontros, desde os cinemas que fazemos todo mês, até os 12 cards que criamos juntos, cada um com um date especial que tiramos durante o ano, passando pelos passeios, jantares, cozinhando às cegas em um dia e inventando comidas para um filme em outro, e até os dias de tempo atoa que passamos só curtindo nossa companhia. Cada presente seu, seja uma cartinha, uma roupa, um perfume, sempre me mostrou o quanto você se importa e me faz sentir especial. E como adoro os presentes feitos à mão por você, quis usar o que aprendi na minha faculdade para criar este site como um gesto de retribuir, um pedacinho do meu esforço e carinho para você. Obrigado por cada abraço, cada risada e cada instante ao seu lado. Mal posso esperar por todos os dias que ainda vamos viver juntos, criando novas memórias e rindo das pequenas coisas.</p>
+            <p>Sei que não gosto muito de postar nossas coisas no Instagram, então resolvi encontrar uma forma de continuar sendo low profile e ainda te fazer uma declaração especial. Espero que tenha gostado kkk</p>
+            </section>
+    </div>
+
+    </main>
+    <script>
+        let index = 0;
+        const slides = document.getElementById("slides");
+        const totalSlides = slides.children.length;
+
+        function showSlide() {
+            index = (index + 1) % totalSlides;
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        setInterval(showSlide, 5000);
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const musica = document.getElementById("musica");
+
+            if (localStorage.getItem("playMusica") === "true") {
+                musica.play().catch(() => {
+                    document.body.addEventListener("click", () => {
+                        musica.play();
+                    }, { once: true });
+                });
+                localStorage.removeItem("playMusica");
+            }
+        });
+    </script>
+</body>
+</html>
