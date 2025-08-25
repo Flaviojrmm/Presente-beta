@@ -50,11 +50,20 @@
         let index = 0;
         const slides = document.getElementById("slides");
         const totalSlides = slides.children.length;
+        const radios = document.querySelectorAll('input[name="radio-btn"]');
 
         function showSlide() {
             index = (index + 1) % totalSlides;
             slides.style.transform = `translateX(${-index * 100}%)`;
+            radios[index].checked = true;
         }
+
+        radios.forEach((radio, i) => {
+            radio.addEventListener('click', () => {
+                index = i;
+                slides.style.transform = `translateX(${-index * 100}%)`;
+            });
+        });
 
         setInterval(showSlide, 5000);
     </script>
