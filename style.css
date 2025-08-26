@@ -11,6 +11,7 @@ h1 {
 h2 {
     text-align: center;   
     color: rgba(243,121,108,255);
+    margin-bottom: 0px;
 }
 
 .texto{
@@ -30,8 +31,8 @@ audio {
 }          
 
 .slider-container {
-    width: 600px;          
-    max-width: 450px;
+    width: 100%;          
+    max-width: 430px;
     height: auto;        
     position: relative;
     overflow: hidden;
@@ -39,11 +40,12 @@ audio {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 0;
 }
 
 .slides {
     display: flex;
-    width: 400%;
+    width: 600%;
     height: auto;
     transition: transform 0.5s ease-in-out;
 }
@@ -54,7 +56,8 @@ audio {
     max-width: 100%;    
     display: block;
     margin: 0 auto;    
-    object-fit: contain; 
+    object-fit: cover;
+    border-radius: 10px; 
 }
 
 input[name="radio-btn"] {
@@ -65,7 +68,10 @@ input[name="radio-btn"] {
 #radio1:checked ~ .slides { transform: translateX(0); }
 #radio2:checked ~ .slides { transform: translateX(-100%); }
 #radio3:checked ~ .slides { transform: translateX(-200%); }
-#radio3:checked ~ .slides { transform: translateX(-300%); }
+#radio4:checked ~ .slides { transform: translateX(-300%); }
+#radio5:checked ~ .slides { transform: translateX(-400%); }
+#radio6:checked ~ .slides { transform: translateX(-500%); }
+
 
 .navigation-manual {
     position: absolute;
@@ -96,9 +102,12 @@ input[name="radio-btn"] {
     box-sizing: border-box;
     }
 
-    .slider-container {
-    width: 100%;          
-    max-width: 435px;
+    .slider-container {   
+    max-width: 225px;
+    margin: 20px auto;
+}
+.navigation-manual {
+    bottom: 5px;
 }
 
 }
